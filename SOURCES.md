@@ -7,6 +7,7 @@ Stations without a matching current price and dated history receive no trend.
 - Kwik Trip / Kwik Star: public store catalog and locator price responses at https://www.kwiktrip.com/locator.
 - Pilot / Flying J network: public station pages linked from https://pilotcompany.com/fuel-prices. Product codes are preserved. E15 is not treated as regular gasoline. Differing cash/credit prices are excluded.
 - Costco / Sam's Club: automatically collected retailer observations published by https://github.com/coatless-data/club-gas-prices. Release digests are checked. The publisher licenses its code under MIT and makes no license claim for retailer-derived data.
+- Current Costco observations are also fetched from the retailer's own public US price response. Old snapshots are never relabelled as today's observations. Puerto Rico's per-litre prices are excluded from the US-gallon comparison feed.
 
 Collection times mean "observed on the website", not a confirmed price-change
 time. Prices may differ from the pump. Sources are unofficial integrations and
