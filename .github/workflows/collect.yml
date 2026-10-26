@@ -18,7 +18,7 @@ jobs:
     # does not run in TravIR's private app repository or access Apple/Google keys.
     if: github.event.repository.private == false && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
-    timeout-minutes: 35
+    timeout-minutes: 45
     steps:
       - name: Check out public observations
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -27,7 +27,7 @@ jobs:
           python3 - <<'PY'
           import hashlib,pathlib,zipfile
           source=pathlib.Path('collector.zip')
-          assert hashlib.sha256(source.read_bytes()).hexdigest()=='5b85638ae1cf64b7af95fc7419a86672046ebe3b8ff3c35f8bc51070916e1d2b', 'Collector differs from reviewed code'
+          assert hashlib.sha256(source.read_bytes()).hexdigest()=='49c68885524a4c00f486ab7b21c8deaad7d4b0b19b23850a28a2ddb3608996f2', 'Collector differs from reviewed code'
           with zipfile.ZipFile(source) as archive:
               assert len(archive.infolist())<=10
               for item in archive.infolist():
