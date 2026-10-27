@@ -27,7 +27,7 @@ jobs:
           python3 - <<'PY'
           import hashlib,pathlib,zipfile
           source=pathlib.Path('collector.zip')
-          assert hashlib.sha256(source.read_bytes()).hexdigest()=='44357e70b9f61f2518f184371052fa0687080ea3229b8e3c64327a762a86033f', 'Collector differs from reviewed code'
+          assert hashlib.sha256(source.read_bytes()).hexdigest()=='002912fc2f848b692a91bd6fa5f7869fea6d6788cc41b2dc7863353b465e81a2', 'Collector differs from reviewed code'
           with zipfile.ZipFile(source) as archive:
               assert len(archive.infolist())<=10
               for item in archive.infolist():
@@ -46,7 +46,7 @@ jobs:
         run: |
           git config user.name 'TravIR data collector'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- retailer-history.json fuel-history.json collection-status.json
+          git add -- retailer-history.json fuel-history.json fuel-history-regions collection-status.json
           if git diff --cached --quiet; then exit 0; fi
           git commit -m 'Update automatic retailer observations'
           git push origin HEAD:main
